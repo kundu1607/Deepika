@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Deepika ❤️</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Confetti JS for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        /* Floating Hearts Animation Background */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart-bg div {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+            transform: rotate(45deg);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .heart-bg div:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            left: -10px;
+        }
+
+        .heart-bg div:nth-child(1) {
+            left: 25%;
+            width: 40px;
+            height: 40px;
+            animation-delay: 0s;
+        }
+
+        .heart-bg div:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .heart-bg div:nth-child(3) {
+            left: 70%;
+            width: 30px;
+            height: 30px;
+            animation-delay: 4s;
+        }
+
+        .heart-bg div:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .heart-bg div:nth-child(5) {
+            left: 65%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 0s;
+        }
+
+        .heart-bg div:nth-child(6) {
+            left: 75%;
+            width: 50px;
+            height: 50px;
+            animation-delay: 3s;
+        }
+
+        .heart-bg div:nth-child(7) {
+            left: 35%;
+            width: 70px;
+            height: 70px;
+            animation-delay: 7s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+                border-radius: 50% 50% 0 0;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px 0 rgba(255, 105, 135, 0.3);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .title-text {
+            color: #d81159;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .sub-text {
+            color: #444;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff4d6d, #ff758c);
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-custom:hover,
+        .btn-custom:active {
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .btn-yes {
+            background: linear-gradient(45deg, #2a9d8f, #28a745);
+            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.4);
+        }
+
+        /* Second option button */
+        #no-btn {
+            position: relative;
+            background: linear-gradient(45deg, #d62828, #e63946);
+            z-index: 1000;
+        }
+
+        /* Proposal Letter */
+        .letter-box {
+            text-align: left;
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4d6d;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .letter-box p {
+            margin-bottom: 12px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #d81159;
+            margin-top: 15px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated Hearts Background -->
+    <div class="heart-bg">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="glass-card" id="main-container">
+
+        <!-- Step 1 -->
+        <div class="slide active" id="slide-1">
+            <h1 class="title-text">Hi Deepika! ✨</h1>
+            <p class="sub-text">Mujhe aapse ek baat kehni hai...<br>Shayad ye baat kehna thoda mushkil hai, lekin dil ki
+                baat dil mein rakhna bhi nahi chahta. ❤️</p>
+            <button class="btn btn-custom" onclick="nextSlide(2)">Next ➡️</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="slide" id="slide-2">
+            <h2 class="title-text">You know... 🙈</h2>
+            <p class="sub-text">Pata nahi kab, lekin aapse baat karna mere liye normal si baat nahi raha. Aapka message
+                aaye toh automatically smile aa jaati hai. Aur sabse achha ye lagta hai ki aap mujhse itni khulkar baat
+                karti hain. 😊</p>
+            <button class="btn btn-custom" onclick="nextSlide(3)">Next ➡️</button>
+        </div>
+
+        <!-- Step 3: The Question -->
+        <div class="slide" id="slide-3">
+            <h2 class="title-text">So... 💖</h2>
+            <p class="sub-text">Aap mere liye bahut special ho gayi hain. Toh ek baat dil se poochna chahta
+                hoon...<br><br>Kya aap meri life mein sirf ek achhi friend nahi, balki ek special person bankar mere
+                saath chalna chahegi? ❤️<br><br><strong>Will you be mine? ❤️</strong></p>
+            <div class="mt-4 d-flex justify-content-center gap-3 align-items-center"
+                style="min-height: 60px; position: relative;">
+                <button class="btn btn-custom btn-yes px-4" onclick="showLetter()">Yes! ❤️</button>
+                <button class="btn btn-custom px-4" id="no-btn">No 💔</button>
+            </div>
+        </div>
+
+        <!-- Step 4: The Proposal Letter -->
+        <div class="slide" id="slide-4">
+            <h2 class="title-text mb-3">Thank You ❤️</h2>
+            <div class="letter-box">
+                <p><strong>Dear Deepika,</strong></p>
+                <p>Sach kahun toh mujhe nahi pata tha ki main ye baat kab aur kaise bolunga. Bas itna pata tha ki aapse
+                    baat karte-karte aap mere liye bahut special ho gayi hain. ❤️</p>
+                <p>Mujhe sabse achha ye lagta hai ki aap mujhse itni khulkar baat karti hain. Aapki smile mere liye
+                    important hai, aur main hamesha chahta hoon ki woh smile bani rahe. 😊</p>
+                <p>Main koi perfect person hone ka promise nahi karta, lekin itna zaroor promise karta hoon ki jo bhi
+                    hoga, honestly hoga. Main aapki respect karunga aur aapki feelings ki bhi respect karunga.</p>
+                <p>Aur agar aap bhi mere liye wahi feeling rakhti hain, toh shayad ye hum dono ki ek bahut khoobsurat
+                    beginning ho sakti hai. ❤️</p>
+                <p><strong>One decision... and maybe something beautiful begins. ❤️</strong></p>
+                <div class="signature">Yours,<br>Sumit ❤️</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to smoothly change slides
+        function nextSlide(slideNumber) {
+            const currentActive = document.querySelector('.slide.active');
+            if (currentActive) {
+                currentActive.style.opacity = '0';
+                currentActive.style.transform = 'scale(0.9)';
+
+                setTimeout(() => {
+                    currentActive.classList.remove('active');
+                    const nextSlide = document.getElementById('slide-' + slideNumber);
+                    if (nextSlide) {
+                        nextSlide.classList.add('active');
+
+                        setTimeout(() => {
+                            nextSlide.style.opacity = '1';
+                            nextSlide.style.transform = 'scale(1)';
+                        }, 50);
+                    }
+                }, 300);
+            }
+        }
+
+        // Show final letter and trigger confetti
+        function showLetter() {
+            nextSlide(4);
+            triggerConfetti();
+        }
+
+        // Confetti Celebration
+        function triggerConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function () {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+                }));
+                confetti(Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+                }));
+            }, 250);
+        }
+
+        // Logic for the dodging "No" button (Mobile friendly)
+        const noBtn = document.getElementById('no-btn');
+
+        const moveButton = (e) => {
+            if (e.cancelable) {
+                e.preventDefault();
+            }
+
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+
+            const maxX = window.innerWidth - btnWidth - 20;
+            const maxY = window.innerHeight - btnHeight - 20;
+
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            noBtn.style.zIndex = '9999';
+        };
+
+        if (noBtn) {
+            noBtn.addEventListener('mouseover', moveButton);
+            noBtn.addEventListener('touchstart', moveButton);
+        }
+    </script>
+</body>
+
+</html>
